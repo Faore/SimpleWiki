@@ -1,0 +1,32 @@
+@import "mixins";
+html, body {
+  @include fill;
+}
+
+.full-page {
+  padding: 0px;
+  margin: 0px;
+}
+
+.navigation-bar {
+  @include fill;
+  background: $gray-lighter;
+  overflow-y: auto;
+}
+
+.fill {
+  @include fill;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: $gray-lighter;
+  width: 100%;
+  padding: 10px;
+}
+
+.content {
+  overflow: auto;
+}
