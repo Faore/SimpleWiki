@@ -29,6 +29,15 @@ class Page extends Model
 			$parser = new \Parsedown();
 			$this->parsed = $parser->text($content);
 			$this->save();
+			$sync = [];
+			foreach($matched_relations[1] as $relation) {
+				if(!is_null($page = Page::whereTitle($relation)->first())) {
+					$sync[] = $page->id;
+				}
+			}
+			$this->parents()->sync($sync);
 		}
 	}
+
+
 }

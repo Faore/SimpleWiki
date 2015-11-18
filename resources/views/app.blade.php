@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SimpleWiki</title>
+		<link rel="stylesheet" type="text/css" href="/animate.css">
+		<link rel="stylesheet" type="text/css" href="/css/app.css">
+		<style>
+			.pace {
+				-webkit-pointer-events: none;
+				pointer-events: none;
+
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				user-select: none;
+
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+
+				-webkit-transform: translate3d(0, -50px, 0);
+				-ms-transform: translate3d(0, -50px, 0);
+				transform: translate3d(0, -50px, 0);
+
+				-webkit-transition: -webkit-transform .5s ease-out;
+				-ms-transition: -webkit-transform .5s ease-out;
+				transition: transform .5s ease-out;
+			}
+
+			.pace.pace-active {
+				-webkit-transform: translate3d(0, 0, 0);
+				-ms-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+
+			.pace .pace-progress {
+				display: block;
+				position: fixed;
+				z-index: 2000;
+				top: 0;
+				right: 100%;
+				width: 100%;
+				height: 5px;
+				background: #28b62c;
+
+				pointer-events: none;
+			}
+
+		</style>
+		<script src="/pace.min.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid fill full-page">
+			<div class="col-sm-3 col-md-2 navigation-bar">
+				<h3>SimpleWiki</h3>
+				<div class="form-group">
+					<div class="input-group">
+						<input class="form-control" type="text">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+					</div>
+				</div>
+				<nav>
+					<ul class="nav nav-pills nav-stacked">
+						<li>
+							<a href="/">Home</a>
+						</li>
+						<li>
+							<a href="/">Licenses</a>
+						</li>
+						<li>
+							<a href="/">Wiki Software</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-sm-9 col-md-10 fill content animated fadeIn">
+				@include('flash::message')
+				@yield('contentPane')
+			</div>
+		</div>
+		@yield('scripts')
+	</body>
+</html>
