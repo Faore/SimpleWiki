@@ -39,5 +39,14 @@ class Page extends Model
 		}
 	}
 
-
+	public static function orphaned() {
+		$pages = \App\Page::all();
+		$finalpages = [];
+		foreach($pages as $page) {
+			if($page->parents()->count() == 0) {
+				$finalpages[] = $page;
+			}
+		}
+		return $finalpages;
+	}
 }

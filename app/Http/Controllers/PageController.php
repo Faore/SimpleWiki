@@ -40,7 +40,7 @@ class PageController extends Controller
     {
         $page = new Page();
         $page->title = $request->input('title');
-        $page->raw = $request->input('content');
+        $page->raw = $request->input('raw');
         $page->parse();
         $page->save();
         \Flash::success('Page created.');
@@ -80,7 +80,13 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $page = \App\Page::findOrFail($id);
+        $page->title = $request->input('title');
+        $page->raw = $request->input('raw');
+        $page->parse();
+        $page->save();
+        \Flash::success('Page edited.');
+        return redirect()->to('/wiki/' . $id);
     }
 
     /**
@@ -94,6 +100,14 @@ class PageController extends Controller
         $page = Page::findOrFail($id);
         $page->delete();
         \Flash::success('Page deleted.');
-        return redirect()->back();
+        return redirect()->to('/');
+    }
+
+    public function refresh($id) {
+        $page = Page::findOrFail($id);
+        $page->parse();
+        $page->save();
+        \Flash::success('Page refreshed. The latest HTML has been rebuilt.');
+        return redirect()->to('/wiki/' . $id);
     }
 }

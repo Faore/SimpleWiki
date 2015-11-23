@@ -4,10 +4,12 @@
 	<div class="col-md-12">
 		<h1>Create a Page</h1>
 		<hr>
-		<form class="form-horizontal" action="/wiki/create" method="post">
-			<input type="text" class="form-control" id="title" placeholder="An Awesome Title">
+		<form class="form-horizontal" action="/wiki" method="post">
+			{{ csrf_field() }}
+			<input type="hidden" name="_method" value="post">
+			<input type="text" class="form-control" name="title" id="title" placeholder="An Awesome Title">
 			<div id="editor">
-				<textarea v-model="input" debounce="300"></textarea>
+				<textarea v-model="input" debounce="300" name="raw"></textarea>
 				<div v-html="input | marked"></div>
 			</div>
 			<button type="submit" class="btn btn-success">Save</button>

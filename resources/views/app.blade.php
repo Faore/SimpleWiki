@@ -48,31 +48,23 @@
 
 		</style>
 		<script src="/pace.min.js"></script>
+		<script src="/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div class="container-fluid fill full-page">
 			<div class="col-sm-3 col-md-2 navigation-bar">
 				<h3>SimpleWiki</h3>
-				<div class="form-group">
-					<div class="input-group">
-						<input class="form-control" type="text">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-search"></i>
-                            </button>
-                        </span>
-					</div>
-				</div>
+
 				<nav>
 					<ul class="nav nav-pills nav-stacked">
 						<li>
 							<a href="/">Home</a>
 						</li>
+						@foreach(\App\Page::orphaned() as $orphan)
 						<li>
-							<a href="/">Licenses</a>
+							<a href="/wiki/{{ $orphan->id }}">{{ $orphan->title }}</a>
 						</li>
-						<li>
-							<a href="/">Wiki Software</a>
-						</li>
+						@endforeach
 					</ul>
 				</nav>
 			</div>

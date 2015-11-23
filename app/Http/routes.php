@@ -12,3 +12,9 @@
 */
 
 Route::resource('/wiki', PageController::class);
+Route::get('/wiki', 'HomeController@index');
+Route::get('/', function() {
+	return redirect()->to('/wiki');
+});
+Route::get('/wiki/{id}/delete', 'PageController@destroy');
+Route::get('/wiki/{id}/refresh', 'PageController@refresh');

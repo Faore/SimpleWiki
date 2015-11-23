@@ -19,6 +19,15 @@
 			<p>Sorry, this page doesn't exist. You can create it though.</p>
 			<a href="/wiki/create" class="btn btn-success">Create Page</a>
 		@endif
+		@if(isset($page->id) && $page->children()->count() > 0)
+			<hr>
+			Pages and categories in this category:
+			<ul>
+			@foreach($page->children()->get() as $child)
+				<li><a href="/wiki/{{ $child->id }}">{{ $child->title }}</a></li>
+			@endforeach
+			</ul>
+		@endif
 	</div>
 </div>
 <div class="container-fluid footer">
