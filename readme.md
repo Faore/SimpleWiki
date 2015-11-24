@@ -1,6 +1,6 @@
 # SimpleWiki
 
-This project was a very barebones wiki developed on top of a lot of open source software for CSCI 215 Ethical Issues in Computer Science by Chris Thomas. The application is built mainly upon the Laravel framework, using Parsedown to parse pages inputted by the user in Markdown. The front end uses Twitter Bootstrap, and Lumen, a theme for Bootstrap. From there, the application layout was heavily customized with my own CSS changes using SASS, an extension language for easily writing and compiling CSS. While there are several other open source projects that played roles in the creation of this application, it would take forever to list them all.
+This project was a very barebones wiki developed on top of a lot of open source software for CSCI 215 Ethical Issues in Computer Science by Chris Thomas. It is based off the Open Source project, [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki), which runs Wikipedia. The application is built mainly upon the Laravel framework, using Parsedown to parse pages inputted by the user in Markdown. The front end uses Twitter Bootstrap, and Lumen, a theme for Bootstrap. From there, the application layout was heavily customized with my own CSS changes using SASS, an extension language for easily writing and compiling CSS. While there are several other open source projects that played roles in the creation of this application, it would take forever to list them all.
 
 This is not a production-worthy wiki and was intended as a simple class project.
 
@@ -19,7 +19,7 @@ Change to the root of the project and install all the dependencies for the appli
 $ cd ./SimpleWiki
 $ composer install
 ```
-For simple viewing, the application is setup with defaults out of the box that do not require an external MySQL server, or an external webserver to operate. For the purpose of evaluation, this works fine. The application is also preloaded with pages for demonstration in the file-based database. To use the built-in server, and existing database run this command:
+For simple viewing, the application is setup with defaults out of the box that do not require an external MySQL server, or an external webserver to operate. For the purpose of evaluation, this works fine. The application is also preloaded with pages for demonstration in the file-based database. **The initial content contains a simple wiki with information on various licenses as well as information on the concepts of copyright.** To use the built-in server, and existing database run this command:
 ``` bash
 $ php artisan serve
 ```
