@@ -28,6 +28,7 @@
 			@endforeach
 			</ul>
 		@endif
+		<div style="height:50px;"></div>
 	</div>
 </div>
 <div class="container-fluid footer">
