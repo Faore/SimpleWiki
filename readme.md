@@ -4,6 +4,8 @@ This project was a very barebones wiki developed on top of a lot of open source 
 
 This is not a production-worthy wiki and was intended as a simple class project.
 
+I acknowledge this is good bit of work to get running on your own, so I've provided a live demo here: http://faore.in:8000/wiki
+
 ## Installation
 
 This application is built on the [PHP programming language](http://php.net/), with a component written in Ruby. PHP will be needed to run any part of the application. Ruby will only be needed if recompiling CSS. This guide assumes you can setup PHP for use on a command line.
