@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\Page;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 class PageController extends Controller
 {
     /**
@@ -33,7 +30,8 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -44,38 +42,44 @@ class PageController extends Controller
         $page->parse();
         $page->save();
         \Flash::success('Page created.');
-        return redirect()->to('/wiki/' . $page->id);
+
+        return redirect()->to('/wiki/'.$page->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $page = Page::find($id);
+
         return view('show')->with('page', $page);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $page = Page::findOrFail($id);
+
         return view('edit')->with('page', $page);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -86,13 +90,15 @@ class PageController extends Controller
         $page->parse();
         $page->save();
         \Flash::success('Page edited.');
-        return redirect()->to('/wiki/' . $id);
+
+        return redirect()->to('/wiki/'.$id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -100,14 +106,17 @@ class PageController extends Controller
         $page = Page::findOrFail($id);
         $page->delete();
         \Flash::success('Page deleted.');
+
         return redirect()->to('/');
     }
 
-    public function refresh($id) {
+    public function refresh($id)
+    {
         $page = Page::findOrFail($id);
         $page->parse();
         $page->save();
         \Flash::success('Page refreshed. The latest HTML has been rebuilt.');
-        return redirect()->to('/wiki/' . $id);
+
+        return redirect()->to('/wiki/'.$id);
     }
 }
